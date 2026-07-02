@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap');
+    @page {
+      size: A4;
+      margin: 20mm 16mm 20mm 16mm;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body {
+      font-family:'IBM Plex Sans Arabic', sans-serif; direction:rtl; text-align:right;
+      color:#e8edf5; background:#0a0e14;
+      font-size:11.2pt; line-height:1.7;
+    }
+    a { color:#00E5D0; text-decoration:none; }
+    code { font-family:'JetBrains Mono',monospace; background:#0b1119;
+      padding:1px 6px; border-radius:5px; font-size:.9em; color:#00E5D0; }
+    strong { color:#00E5D0; font-weight:800; }
+
+    /* ---------- COVER ---------- */
+    .cover {
+      position:relative; height:257mm; margin:-20mm -16mm 0 -16mm;
+      background:radial-gradient(900px 600px at 80% 0%, rgba(0,229,208,.18), transparent 60%), radial-gradient(700px 500px at 0% 100%, rgba(37,99,235,.20), transparent 55%), #0a0e14; color:#fff;
+      padding:38mm 20mm; display:flex; flex-direction:column;
+      page-break-after:always; overflow:hidden;
+    }
+    .cover-kicker { font-size:13pt; letter-spacing:2px; text-transform:uppercase;
+      color:rgba(255,255,255,.85); font-weight:700; margin-bottom:14mm; }
+    .cover-kicker .dot { color:#19f0ff; }
+    .cover h1 { font-size:33pt; font-weight:900; line-height:1.25; margin-bottom:8mm;
+      color:#fff; max-width:150mm; }
+    .cover .csub { font-size:15pt; font-weight:500; color:rgba(255,255,255,.9);
+      max-width:150mm; line-height:1.6; }
+    .cover-meta { margin-top:auto; display:flex; flex-direction:column; gap:5mm; }
+    .cover-chips { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:6mm; }
+    .cover-chip { background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.28);
+      border-radius:999px; padding:4px 14px; font-size:9.5pt; font-weight:700; color:#fff; }
+    .cover-chip.conf { background:rgba(255,255,255,.22); }
+    .cover-info { display:flex; gap:16mm; flex-wrap:wrap; }
+    .cover-info .k { font-size:9pt; text-transform:uppercase; letter-spacing:1px;
+      color:rgba(255,255,255,.7); margin-bottom:2px; }
+    .cover-info .v { font-size:12pt; font-weight:800; color:#fff; }
+    .cover-line { position:absolute; left:0; top:0; bottom:0; width:3px;
+      background:linear-gradient(180deg,#19f0ff,transparent); opacity:.6; }
+
+    /* ---------- SECTIONS ---------- */
+    h2.sec { font-size:18pt; font-weight:900; color:#00E5D0;
+      margin:9mm 0 4mm; padding-bottom:3mm; border-bottom:2px solid rgba(255,255,255,.09);
+      display:flex; align-items:center; gap:10px; page-break-after:avoid; }
+    h3.sec { font-size:13.5pt; font-weight:800; color:#e8edf5; margin:6mm 0 3mm; page-break-after:avoid; }
+    .sn { display:inline-flex; align-items:center; justify-content:center; min-width:30px; height:30px;
+      padding:0 8px; border-radius:9px; background:rgba(0,229,208,.12); border:1px solid rgba(0,229,208,.32);
+      color:#00E5D0; font-size:12pt; font-weight:900; font-family:'JetBrains Mono'; }
+    .rsec { page-break-inside:auto; }
+    p { margin:0 0 3mm; color:#e8edf5; }
+    .rl { margin:0 0 4mm; padding-right:7mm; }
+    .rl li { margin:1.5mm 0; }
+
+    /* callouts */
+    .callout { display:flex; gap:10px; padding:4mm 5mm; border-radius:12px; margin:4mm 0;
+      background:#0d1320; border:1px solid rgba(255,255,255,.09);
+      border-right:4px solid #00E5D0; page-break-inside:avoid; }
+    .callout .ci { font-size:15pt; line-height:1.2; }
+    .callout-warn { border-right-color:#ff5d6c; }
+    .callout-key { border-right-color:#ffc24b; background:rgba(0,229,208,.07); }
+    .callout-tip { border-right-color:#34e0a1; }
+
+    /* quotes */
+    blockquote { background:rgba(0,229,208,.07); border-right:4px solid #00E5D0;
+      padding:4mm 6mm; border-radius:10px; margin:4mm 0; font-style:italic; color:#e8edf5;
+      page-break-inside:avoid; }
+    .qcite { margin-top:2mm; font-style:normal; font-weight:700; color:#9aa6b8; font-size:.9em; }
+
+    /* code */
+    pre.code { background:#0b1119; border:1px solid rgba(255,255,255,.09); border-radius:10px;
+      padding:4mm 5mm; font-family:'JetBrains Mono',monospace; font-size:9.5pt; color:#19f0ff;
+      direction:ltr; text-align:left; white-space:pre-wrap; margin:4mm 0; page-break-inside:avoid; line-height:1.6; }
+
+    /* tables */
+    .tbl-wrap { margin:4mm 0; page-break-inside:avoid; }
+    table { width:100%; border-collapse:collapse; font-size:10pt; }
+    th,td { text-align:right; padding:3mm 4mm; border-bottom:1px solid rgba(255,255,255,.09); }
+    th { background:rgba(0,229,208,.12); color:#00E5D0; font-weight:800; font-size:9.5pt;
+      border-bottom:2px solid rgba(0,229,208,.32); }
+    tbody tr:nth-child(even) { background:#0d1320; }
+    .tcap { font-size:9pt; color:#9aa6b8; margin-top:2mm; text-align:center; }
+
+    /* stats */
+    .stats { display:flex; gap:4mm; flex-wrap:wrap; margin:4mm 0; }
+    .stat { flex:1; min-width:38mm; background:#0d1320; border:1px solid rgba(255,255,255,.09);
+      border-radius:12px; padding:5mm; text-align:center; page-break-inside:avoid; }
+    .stat-v { font-size:22pt; font-weight:900; color:#00E5D0; font-family:'JetBrains Mono'; line-height:1.1; }
+    .stat-l { font-size:9pt; color:#9aa6b8; margin-top:2mm; font-weight:600; }
+
+    hr.div { border:none; border-top:1px solid rgba(255,255,255,.09); margin:6mm 0; }
+    .pagebreak { page-break-after:always; }
+
+    /* key findings */
+    .kf-wrap { margin:4mm 0; }
+    .kf { display:flex; gap:10px; align-items:flex-start; background:#0d1320;
+      border:1px solid rgba(255,255,255,.09); border-radius:12px; padding:4mm 5mm; margin:2.5mm 0; page-break-inside:avoid; }
+    .kf-n { flex:none; width:26px; height:26px; border-radius:50%; background:#00E5D0;
+      color:#062; font-weight:900; display:flex; align-items:center;
+      justify-content:center; font-size:11pt; }
+    .kf-t { font-size:10.5pt; }
+
+    /* exec */
+    .exec { background:#0d1320; border:1px solid rgba(255,255,255,.09); border-radius:16px;
+      padding:6mm 7mm; margin:4mm 0 6mm; }
+    .exec-h { margin-top:0; }
+
+    /* toc */
+    .toc { page-break-after:always; }
+    .toc-row { display:flex; align-items:center; gap:8px; padding:2.5mm 0; border-bottom:1px dashed rgba(255,255,255,.09); }
+    .toc-row a { display:flex; align-items:center; gap:10px; color:#e8edf5; font-weight:600; flex:1; }
+    .toc-n { font-family:'JetBrains Mono'; font-weight:800; color:#00E5D0; min-width:34px; }
+
+    /* sources */
+    .src { display:flex; gap:10px; padding:3mm 0; border-bottom:1px solid rgba(255,255,255,.09); page-break-inside:avoid; }
+    .src-n { font-family:'JetBrains Mono'; font-weight:800; color:#00E5D0; flex:none; }
+    .src-t { font-weight:700; font-size:10.5pt; }
+    .src-u { font-family:'JetBrains Mono'; font-size:8.5pt; color:#19f0ff;
+      direction:ltr; text-align:right; word-break:break-all; }
+    .src-m { font-size:9pt; color:#9aa6b8; }
+    
+    /* ===== RESPONSIVE WEB MODE ===== */
+    @page { margin:0; }
+    html { scroll-behavior:smooth; }
+    body { font-size:17px; line-height:1.85; max-width:860px; margin:0 auto;
+      padding:0 20px 80px; background:#0a0e14; }
+    .cover { height:auto; min-height:auto; margin:0 -20px 30px; padding:64px 32px 56px;
+      page-break-after:auto; border-radius:0 0 28px 28px; }
+    .cover h1 { font-size:clamp(26px,6vw,44px); max-width:100%; }
+    .cover .csub { font-size:clamp(15px,3.6vw,19px); max-width:100%; }
+    .cover-kicker { margin-bottom:32px; }
+    .cover-meta { margin-top:40px; }
+    h2.sec { font-size:clamp(20px,4.6vw,26px); margin:36px 0 16px; padding-bottom:12px; scroll-margin-top:16px; }
+    h3.sec { font-size:clamp(17px,3.8vw,20px); margin:24px 0 12px; }
+    .sn { min-width:36px; height:36px; font-size:16px; }
+    p { margin:0 0 14px; }
+    .rl { padding-right:22px; margin-bottom:16px; }
+    .rl li { margin:8px 0; }
+    .callout { padding:16px 18px; margin:18px 0; border-radius:14px; }
+    .callout .ci { font-size:22px; }
+    blockquote { padding:16px 20px; margin:18px 0; }
+    pre.code { padding:16px 18px; font-size:14px; margin:18px 0; overflow-x:auto; }
+    .tbl-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; margin:18px 0; }
+    table { font-size:15px; min-width:100%; }
+    th,td { padding:12px 14px; }
+    .stats { gap:14px; margin:18px 0; }
+    .stat { min-width:120px; padding:20px 16px; border-radius:16px; }
+    .stat-v { font-size:32px; }
+    .stat-l { font-size:13px; }
+    .exec { padding:24px 26px; margin:20px 0 30px; border-radius:20px; }
+    .kf { padding:16px 18px; margin:10px 0; border-radius:14px; }
+    .kf-n { width:32px; height:32px; font-size:15px; }
+    .kf-t { font-size:16px; }
+    .toc { page-break-after:auto; }
+    .toc-row { padding:12px 0; }
+    .src { padding:14px 0; }
+    .src-t { font-size:16px; }
+    .src-u { font-size:12px; }
+    /* reading progress bar */
+    #progress { position:fixed; top:0; right:0; height:4px; width:0%;
+      background:linear-gradient(90deg,#00E5D0,#19f0ff);
+      z-index:999; transition:width .1s ease; box-shadow:0 0 10px #00E5D0; }
+    /* back-to-top */
+    #totop { position:fixed; bottom:22px; left:22px; width:46px; height:46px;
+      border-radius:50%; background:#00E5D0; color:#062;
+      border:none; font-size:22px; cursor:pointer; display:none; align-items:center; justify-content:center;
+      box-shadow:0 6px 20px rgba(0,0,0,.35); z-index:998; }
+    @media (max-width:600px) {
+      .cover { padding:48px 22px 40px; }
+      .cover-info { gap:20px; }
+      .stats { flex-direction:column; }
+    }
+    /* theme toggle button */
+    #themebtn { position:fixed; top:14px; left:14px; z-index:1000;
+      background:rgba(127,127,127,.18); border:1px solid rgba(127,127,127,.35); color:#fff;
+      backdrop-filter:blur(8px); border-radius:999px; padding:8px 16px; font-size:14px;
+      font-weight:700; cursor:pointer; font-family:inherit; }
+    
+    /* ===== ALT THEME (toggled) ===== */
+    [data-theme="alt"] body { background:#ffffff; color:#14202e; }
+    [data-theme="alt"] p, [data-theme="alt"] .kf-t, [data-theme="alt"] li { color:#14202e; }
+    [data-theme="alt"] h2.sec { color:#0b3d91; border-bottom-color:#dde5ee; }
+    [data-theme="alt"] h3.sec { color:#14202e; }
+    [data-theme="alt"] strong { color:#0b3d91; }
+    [data-theme="alt"] a, [data-theme="alt"] .sn, [data-theme="alt"] .toc-n,
+    [data-theme="alt"] .src-n, [data-theme="alt"] .stat-v { color:#1e5fbf; }
+    [data-theme="alt"] .cover { background:linear-gradient(135deg, #0b3d91 0%, #1e5fbf 55%, #2f80ed 100%); }
+    [data-theme="alt"] .exec, [data-theme="alt"] .stat, [data-theme="alt"] .kf,
+    [data-theme="alt"] .callout { background:#f7fafd; border-color:#dde5ee; }
+    [data-theme="alt"] blockquote { background:#eef4fc; border-inline-start-color:#1e5fbf; }
+    [data-theme="alt"] pre.code { background:#f2f5f9; border-color:#dde5ee;
+      color:#0b3d91; }
+    [data-theme="alt"] th { background:#eaf1fc; color:#1e5fbf; border-bottom-color:#c3d8f5; }
+    [data-theme="alt"] td { border-bottom-color:#dde5ee; }
+    [data-theme="alt"] tbody tr:nth-child(even) { background:#f7fafd; }
+    [data-theme="alt"] .sn { background:#eaf1fc; border-color:#c3d8f5; }
+    [data-theme="alt"] .kf-n { background:#1e5fbf; color:#fff; }
+    [data-theme="alt"] .muted, [data-theme="alt"] .src-m, [data-theme="alt"] .stat-l { color:#5b6b7d; }
+    </style></head>
+<body>
+  <div class="cover">
+    <div class="cover-line"></div>
+    <div class="cover-kicker">تقرير بحثي معمّق <span class="dot">◆</span></div>
+    <h1>قيمة شهادة الدبلومة الأمريكية بعد التخرّج</h1>
+    <div class="csub">مزايا وعيوب الشهادة نفسها: القبول الجامعي، الاعتراف الدولي، وسوق العمل — تقرير بحثي معمّق</div>
+    <div class="cover-meta">
+      <div class="cover-chips"><span class="cover-chip">الدبلومة الأمريكية</span><span class="cover-chip">القبول الجامعي</span><span class="cover-chip">الاعتراف الدولي</span><span class="cover-chip">سوق العمل</span><span class="cover-chip">مصر 2025</span><span class="cover-chip conf">مستوى الثقة: عالية</span></div>
+      <div class="cover-info">
+        <div><div class="k">إعداد</div><div class="v">إسلام — Deep Research</div></div>
+        <div><div class="k">التاريخ</div><div class="v">2026-07-02</div></div>
+      </div>
+    </div>
+  </div>
+  
+        <section class="exec">
+          <h2 class="sec exec-h">الملخص التنفيذي</h2>
+          <p>الدبلومة الأمريكية (American High School Diploma) هي شهادة إتمام الثانوية وفق النظام الأمريكي، معتمدة من هيئة اعتماد أمريكية ومعادَلة رسميًا للثانوية العامة المصرية من المجلس الأعلى للجامعات. هذا التقرير لا يناقش نظام الدراسة ولا تكلفتها، بل يركّز على <strong>قيمة الشهادة نفسها بعد أن تصير في يدك</strong>: ماذا تفتح لك في الجامعات المصرية، وما وزنها دوليًا، وكيف يراها سوق العمل.</p><p>الخلاصة المتوازنة: الشهادة <strong>أصل قوي ومرن ومعترف به دوليًا</strong>، وميزتها الكبرى أنها تفتح أبواب الجامعات في أمريكا وكندا وأوروبا والخليج — وهي أبواب لا تفتحها الثانوية العامة المصرية بسهولة. لكن قيمتها داخل مصر مشروطة: القبول في كليات القمة الحكومية (طب، صيدلة، هندسة) يخضع لنظام نسبة مقاعد محدودة وحدود دنيا مرتفعة ومتغيّرة سنويًا، كما أن SAT نفسه <strong>غير معترف به مباشرة داخل مصر</strong> ويتطلب اختبار EST المصري المعادِل.</p><p>الحكم النهائي يعتمد على هدفك: إن كنت تنوي السفر أو إكمال الدراسة/العمل في الخليج فالشهادة استثمار ممتاز؛ وإن كان هدفك مقعدًا في كلية قمة حكومية مصرية بعينها فهي ممكنة لكن المنافسة عليها قد تكون أصعب مما تتوقع بسبب محدودية المقاعد المخصصة للشهادات المعادلة.</p>
+          <div class="kf-wrap"><div class="kf"><div class="kf-n">1</div><div class="kf-t">الشهادة معادَلة رسميًا للثانوية العامة وتؤهلك للجامعات المصرية الحكومية والخاصة والأهلية، لكن القبول في كليات القمة يخضع لحدود دنيا مرتفعة ونسبة مقاعد محدودة للشهادات المعادلة.</div></div><div class="kf"><div class="kf-n">2</div><div class="kf-t">أكبر ميزة حقيقية هي الاعتراف الدولي: قبول واسع في جامعات أمريكا وكندا وأوروبا والخليج عبر SAT/ACT — وهي ميزة غير متاحة عمليًا لحامل الثانوية العامة.</div></div><div class="kf"><div class="kf-n">3</div><div class="kf-t">SAT غير معترف به مباشرة للقبول داخل مصر؛ الطالب في مصر يمتحن EST (الاختبار المصري المعادِل) لأن SAT ممنوع أداؤه داخل مصر حاليًا.</div></div><div class="kf"><div class="kf-n">4</div><div class="kf-t">تنسيق 2025 الرسمي: طب القاهرة 121.96 / هندسة القاهرة 118.32 / حاسبات وذكاء اصطناعي القاهرة 114.54 (من إجمالي معادَل) — أرقام مرتفعة تعكس منافسة قوية.</div></div><div class="kf"><div class="kf-n">5</div><div class="kf-t">في سوق العمل، الشهادة الثانوية نفسها قلّ وزنها المباشر بعد التخرج الجامعي؛ ميزتها الأبقى هي إتقان الإنجليزية والمهارات، بينما شهادة الجامعة هي الفيصل.</div></div></div>
+        </section>
+  <section class="toc"><h2 class="sec">المحتويات</h2><div class="toc-row"><a href="#intro"><span class="toc-n">1</span><span class="toc-t">المقصود بـ«قيمة الشهادة بعد التخرّج»</span></a><span class="toc-dots"></span></div><div class="toc-row"><a href="#recognition-eg"><span class="toc-n">2</span><span class="toc-t">المحور الأول: القبول في الجامعات المصرية</span></a><span class="toc-dots"></span></div><div class="toc-row"><a href="#cutoffs"><span class="toc-n">3</span><span class="toc-t">أرقام التنسيق الرسمية 2025 — الحدود الدنيا</span></a><span class="toc-dots"></span></div><div class="toc-row"><a href="#international"><span class="toc-n">4</span><span class="toc-t">المحور الثاني: الاعتراف الدولي (أكبر ميزة)</span></a><span class="toc-dots"></span></div><div class="toc-row"><a href="#job-market"><span class="toc-n">5</span><span class="toc-t">المحور الثالث: سوق العمل — هل تفرق الشهادة الثانوية؟</span></a><span class="toc-dots"></span></div><div class="toc-row"><a href="#social"><span class="toc-n">6</span><span class="toc-t">أصوات السوشيال ميديا — تجارب طلبة فعليين</span></a><span class="toc-dots"></span></div><div class="toc-row"><a href="#verdict"><span class="toc-n">7</span><span class="toc-t">الخلاصة والحكم النهائي</span></a><span class="toc-dots"></span></div></section>
+  <section class="rsec"><h2 class="sec" id="intro"><span class="sn">1</span>المقصود بـ«قيمة الشهادة بعد التخرّج»</h2>
+<p>هذا التقرير يجيب على سؤال محدد: بعد أن تنهي الدبلومة الأمريكية وتصبح الشهادة في يدك، <strong>ما وزنها الفعلي؟</strong> لا نتحدث عن صعوبة الدراسة أو مصاريفها، بل عن ثلاثة محاور تحدد قيمتها الحقيقية:</p>
+<ol class="rl"><li><strong>القبول الجامعي داخل مصر</strong> — أي الكليات تفتحها لك، وبأي شروط.</li><li><strong>الاعتراف الدولي</strong> — وزنها خارج مصر (أمريكا/كندا/أوروبا/الخليج).</li><li><strong>سوق العمل</strong> — هل تفرق الشهادة الثانوية نفسها عند التوظيف؟</li></ol>
+<div class="callout callout-info"><span class="ci">ℹ️</span><div>المرجعية الرسمية في مصر: الشهادة معتمدة من هيئة اعتماد أمريكية معترف بها، ومعادَلة للثانوية العامة عبر <strong>المجلس الأعلى للجامعات</strong> ومكتب تنسيق القبول للشهادات المعادلة.</div></div></section>
+<section class="rsec"><h2 class="sec" id="recognition-eg"><span class="sn">2</span>المحور الأول: القبول في الجامعات المصرية</h2>
+<h2 class="sec">الاعتراف الأساسي</h2>
+<p>الغالبية العظمى من الجامعات المصرية — الحكومية والخاصة والأهلية — تعترف بالدبلومة الأمريكية وتقبل حامليها [1][5]. الشهادة تعادل الثانوية العامة، فتدخل بها التنسيق العام للشهادات المعادلة.</p>
+<h2 class="sec">الشرط الجوهري: EST وليس SAT داخل مصر</h2>
+<div class="callout callout-warn"><span class="ci">⚠️</span><div>نقطة يجهلها كثيرون: <strong>اختبار SAT غير معترف به مباشرة للقبول داخل مصر</strong>، رغم اعتراف الجامعات الأمريكية والأوروبية به [1]. أداء SAT داخل مصر ممنوع حاليًا؛ لذلك الطالب في مصر يمتحن <strong>EST</strong> (الاختبار المصري) الذي تجري له معادلة رسمية مقابل SAT/ACT للدخول للجامعات المصرية [7].</div></div>
+<p>تقييم القبول يجمع عاملين: <strong>المعدل التراكمي GPA</strong> (عادة من الصف 9 إلى 12) + <strong>درجات SAT/EST</strong>. للكليات العملية (طب/هندسة) تُطلب مواد SAT التخصصية (Math، Biology، Chemistry) بحدود دنيا مرتفعة [2][6].</p>
+<h2 class="sec">شروط المعادلة التي يجب استيفاؤها</h2>
+<ul class="rl"><li>الشهادة صادرة من <strong>مدرسة معتمدة</strong> من هيئة اعتماد دولية معترف بها في مصر [5].</li><li>النجاح في <strong>8 مواد على الأقل</strong>، أغلبها من الصف الثاني عشر (G12) [3].</li><li>استيفاء <strong>الحد الأدنى المطلوب في SAT/EST</strong> حسب الكلية [5].</li><li>التسلسل الدراسي والمواد المؤهِّلة صحيحة (G10/G11/G12 أو G11/G12 أو G12) [5].</li></ul>
+<div class="callout callout-key"><span class="ci">🔑</span><div>الرسالة العملية: امتلاك الشهادة لا يعني القبول تلقائيًا. استيفاء الحد الأدنى يضمن <strong>دخولك عملية الاختيار (selection)</strong> فقط، لا مقعدًا مضمونًا — كما تنص جامعات مثل AUC صراحةً [6].</div></div></section>
+<section class="rsec"><h2 class="sec" id="cutoffs"><span class="sn">3</span>أرقام التنسيق الرسمية 2025 — الحدود الدنيا</h2>
+<p>هذه الأرقام من تنسيق الشهادات المعادلة الرسمي 2025/2026 (الدرجة المعادَلة من إجمالي حسبة التنسيق للشهادات المعادلة) [4]. تعكس مدى المنافسة على كل كلية:</p>
+<div class="tbl-wrap"><table><thead><tr><th>الكلية</th><th>الحد الأدنى</th></tr></thead><tbody><tr><td>طب أسنان الإسكندرية</td><td>122.28</td></tr><tr><td>طب القاهرة</td><td>121.96</td></tr><tr><td>طب عين شمس</td><td>121.84</td></tr><tr><td>طب الإسكندرية / حلوان</td><td>121.66</td></tr><tr><td>صيدلة عين شمس</td><td>119.68</td></tr><tr><td>صيدلة القاهرة</td><td>119.37</td></tr><tr><td>علاج طبيعي القاهرة</td><td>119.39</td></tr><tr><td>هندسة القاهرة</td><td>118.32</td></tr><tr><td>هندسة الإسكندرية</td><td>117.79</td></tr><tr><td>هندسة عين شمس</td><td>117.64</td></tr><tr><td>هندسة حلوان</td><td>117.34</td></tr><tr><td>حاسبات وذكاء اصطناعي القاهرة (رياضة)</td><td>114.54</td></tr><tr><td>حاسبات ومعلومات عين شمس (رياضة)</td><td>113.76</td></tr><tr><td>اقتصاد وعلوم سياسية القاهرة</td><td>112.59</td></tr><tr><td>حاسبات وذكاء اصطناعي حلوان (رياضة)</td><td>112.02</td></tr></tbody></table><div class="tcap">الحد الأدنى للقبول — دبلومة أمريكية 2025 (عيّنة من كليات القمة والعملية) [4]</div></div>
+<div class="callout callout-warn"><span class="ci">⚠️</span><div><strong>الحدود الدنيا تتغيّر كل سنة</strong> ويحددها المجلس الأعلى للجامعات سنويًا [4]. لا يوجد ضمان أن معدلك اليوم سيكفي لنفس الكلية العام القادم — وهذا عامل مخاطرة حقيقي عند التخطيط.</div></div>
+<div class="callout callout-info"><span class="ci">ℹ️</span><div>ملاحظة على مجالك (ميكاترونكس/برمجة): كليات الحاسبات والذكاء الاصطناعي وهندسة الإلكترونيات حدودها أقل نسبيًا من طب/هندسة القمة، أي أكثر واقعية للوصول إليها بالدبلومة الأمريكية.</div></div></section>
+<section class="rsec"><h2 class="sec" id="international"><span class="sn">4</span>المحور الثاني: الاعتراف الدولي (أكبر ميزة)</h2>
+<p>هنا القيمة الأكبر للشهادة. الدبلومة الأمريكية + SAT/ACT معترف بهما على نطاق واسع في <strong>الولايات المتحدة وكندا وأوروبا والخليج</strong> [1][8]، وهي أبواب لا يفتحها حامل الثانوية العامة المصرية بسهولة.</p>
+<div class="stats"><div class="stat"><div class="stat-v">950</div><div class="stat-l">الحد الأدنى المجمّع SAT-I للنظر في القبول بالجامعة الأمريكية بالقاهرة AUC [6]</div></div><div class="stat"><div class="stat-v">560</div><div class="stat-l">أدنى SAT-Math للتخصصات الهندسية/الحاسبات في AUC [6]</div></div><div class="stat"><div class="stat-v">2.0/4.0</div><div class="stat-l">أدنى GPA تراكمي مقبول في AUC [6]</div></div></div>
+<h2 class="sec">أمثلة واقعية على القبول الدولي</h2>
+<ul class="rl"><li><strong>الجامعة الأمريكية بالقاهرة (AUC):</strong> تقبل الدبلومة الأمريكية مباشرةً على أساس GPA + SAT/ACT، وتعطي أفضلية لمن أنهى 12 سنة دراسية بالنظام الأمريكي [6].</li><li><strong>الخليج (السعودية/الإمارات):</strong> الشهادة مقبولة للقبول الجامعي بشرط أن تكون من مؤسسة معتمدة، مع إجراء الاعتراف/المعادلة عبر وزارة التعليم العالي بالدولة [الإمارات/السعودية] [9][10].</li><li><strong>أوروبا:</strong> مسارات ممكنة (مثل دراسة الطب في ألمانيا) بعد استيفاء متطلبات اللغة والاختبارات التأهيلية للبلد [11].</li><li><strong>AP credits:</strong> درجات 4 فأعلى في امتحانات Advanced Placement قد تُحتسب ساعات معتمدة تختصر عليك مواد في الجامعة [6].</li></ul>
+<div class="callout callout-tip"><span class="ci">💡</span><div>لو تفكر تسافر أو تكمل برّه لاحقًا، الدبلومة الأمريكية هي <strong>العملة الأقرب للقبول العالمي</strong> — وهذه الميزة وحدها كثيرًا ما تبرر اختيارها لمن لديه طموح دولي.</div></div></section>
+<section class="rsec"><h2 class="sec" id="job-market"><span class="sn">5</span>المحور الثالث: سوق العمل — هل تفرق الشهادة الثانوية؟</h2>
+<p>بعد التخرج الجامعي، <strong>وزن الشهادة الثانوية نفسها يتضاءل</strong> في التوظيف — أصحاب العمل ينظرون إلى الشهادة الجامعية والخبرة والمهارات أولًا. لكن الدبلومة الأمريكية تترك أثرًا غير مباشر مهمًا:</p>
+<div class="kf-wrap"><div class="kf"><div class="kf-n">1</div><div class="kf-t"><strong>الإنجليزية القوية</strong> هي المكسب الأبقى: خريج الدبلومة يخرج بلغة أقوى بوضوح، وهي ميزة مباشرة في الشركات متعددة الجنسيات وفي مجالات التقنية والهندسة والطب.</div></div><div class="kf"><div class="kf-n">2</div><div class="kf-t"><strong>مهارات العرض والبحث والمشاريع</strong> التي يبنيها النظام الأمريكي تنعكس على الأداء المهني لاحقًا أكثر من مجرد الدرجات.</div></div><div class="kf"><div class="kf-n">3</div><div class="kf-t"><strong>سهولة الحركة الدولية للعمل:</strong> الشهادة تسهّل مسارات الدراسة العليا/العمل في الخليج والغرب، حيث الاعتراف بها منظّم عبر جهات رسمية [9][10].</div></div></div>
+<div class="callout callout-warn"><span class="ci">⚠️</span><div>تحذير من تجارب الطلبة: طالب الدبلومة (خاصة مسار Home Schooling) قد <strong>لم يدرس كثيرًا من مواد الأساس</strong> التي يدرسها طالب الثانوية العامة، فيعاني في السنوات الأولى بالكليات العملية (طب/هندسة) [12]. الشهادة تفتح الباب، لكن الأساس العلمي قد يحتاج تعويضًا.</div></div></section>
+<section class="rsec"><h2 class="sec" id="social"><span class="sn">6</span>أصوات السوشيال ميديا — تجارب طلبة فعليين</h2>
+<p>جمعنا آراء وتجارب من يوتيوب وتيك توك (طلبة ومدرّسون في المجال). ملاحظة مهمة: جزء من هذا المحتوى تسويقي (سناتر ومدرّسون)، فالأرقام إرشادية لا نهائية.</p>
+<blockquote>«الـ GPA بتاع المدرسة بيمثّل 40%، وبتمتحن EST 1 (رياضة وإنجليزي) وEST 2 (Math وBio/Chemistry). SAT نفسه ممنوع تمتحنه في مصر — بتمتحن EST المعادِل. Math بيفتحلك كل الكليات، وBiology للطب.»<div class="qcite">— د. أحمد حسن — شرح الدبلومة الأمريكية، يوتيوب [13]</div></blockquote>
+<ul class="rl"><li><strong>اتفاق عام:</strong> الشهادة أسهل نفسيًا من الثانوية العامة (درجات متراكمة + محاولات متعددة للاختبار) — ميزة يذكرها معظم الطلبة.</li><li><strong>شكوى متكررة:</strong> «الدبلومة طلعت مقلب» — من طلبة فوجئوا بأن الحدود الدنيا مرتفعة وأن المقاعد الحكومية محدودة، فلم تكن الطريق السهل لكلية القمة كما توقعوا [14].</li><li><strong>نصيحة متكررة:</strong> ركّز على SAT/EST Math لأنه يفتح أوسع نطاق كليات، ولا تعتمد على محاولة واحدة — وزّع محاولاتك على عدة مواعيد [13].</li></ul>
+<div class="callout callout-info"><span class="ci">ℹ️</span><div>المحصلة من السوشيال ميديا: الرضا مرتفع بين من هدفهم السفر أو الجامعات الخاصة/الدولية، والإحباط أعلى بين من استهدفوا كلية قمة حكومية واصطدموا بنظام المقاعد والحدود.</div></div></section>
+<section class="rsec"><h2 class="sec" id="verdict"><span class="sn">7</span>الخلاصة والحكم النهائي</h2>
+<div class="tbl-wrap"><table><thead><tr><th>هدفك</th><th>الحكم</th><th>السبب</th></tr></thead><tbody><tr><td>السفر / إكمال الدراسة بالخارج</td><td>🟢 ممتازة</td><td>اعتراف دولي واسع عبر SAT/ACT</td></tr><tr><td>العمل/الدراسة في الخليج</td><td>🟢 قوية</td><td>معادلة منظّمة عبر وزارات التعليم العالي</td></tr><tr><td>كلية قمة حكومية (طب/هندسة) بمصر</td><td>🟡 ممكنة بصعوبة</td><td>حدود دنيا مرتفعة + مقاعد محدودة + تغيّر سنوي</td></tr><tr><td>حاسبات/ذكاء اصطناعي/إلكترونيات بمصر</td><td>🟢 واقعية</td><td>حدودها أقل نسبيًا من القمة</td></tr><tr><td>قوة الإنجليزية والمهارات مدى الحياة</td><td>🟢 مكسب مؤكد</td><td>أثر مباشر في الجامعة والعمل</td></tr></tbody></table><div class="tcap">قيمة الشهادة حسب هدفك</div></div>
+<div class="kf-wrap"><div class="kf"><div class="kf-n">1</div><div class="kf-t">الشهادة نفسها <strong>أصل قوي ومرن ومعترف به دوليًا</strong> — أقوى من الثانوية العامة في البُعد الدولي.</div></div><div class="kf"><div class="kf-n">2</div><div class="kf-t">عيبها الجوهري: <strong>لا تضمن أعلى الكليات الحكومية</strong> بسبب نظام المقاعد والحدود المتغيّرة، و<strong>SAT غير معترف به مباشرة داخل مصر</strong> (تحتاج EST).</div></div><div class="kf"><div class="kf-n">3</div><div class="kf-t">بعد التخرج الجامعي، <strong>الجامعة والمهارات هي الفيصل</strong> في العمل؛ الميزة الأبقى للدبلومة هي الإنجليزية والانفتاح الدولي.</div></div></div>
+<div class="callout callout-key"><span class="ci">🔑</span><div>باختصار: إن كان أفقك دوليًا أو مجالك تقنيًا (حاسبات/إلكترونيات) فالدبلومة الأمريكية استثمار ذكي. أما إن كان الهدف مقعد طب/هندسة حكومي قمة بعينه في مصر، فادخلها وعينك على أن المنافسة والشروط أصعب مما تبدو، وخطّط للـ EST Math مبكرًا.</div></div></section>
+  <section class="sources"><h2 class="sec">المصادر والمراجع</h2><div class="src"><div class="src-n">[1]</div><div class="src-b"><div class="src-t">الدبلومة الأمريكية: المميزات والعيوب والمناهج</div><div class="src-u">https://www.dirasaabroad.com/american-diploma/</div><div class="src-m">Dirasa Abroad · 2024</div></div></div><div class="src"><div class="src-n">[2]</div><div class="src-b"><div class="src-t">شروط قبول الدبلومة الأمريكية بالجامعات المصرية 2026</div><div class="src-u">https://studyinegy.com/شروط-قبول-الدبلومة-الامريكية-بالجامع/</div><div class="src-m">Study in Egypt · 2025</div></div></div><div class="src"><div class="src-n">[3]</div><div class="src-b"><div class="src-t">شروط قبول الدبلومة الأمريكية بالجامعات المصرية (8 مواد)</div><div class="src-u">https://study-in-egy.org/شروط-قبول-الدبلومة-الأمريكية-بالجامع/</div><div class="src-m">Study-in-Egy · 2026</div></div></div><div class="src"><div class="src-n">[4]</div><div class="src-b"><div class="src-t">تنسيق الدبلومة الأمريكية 2025/2026 الرسمي — الحدود الدنيا</div><div class="src-u">https://shbabbek.com/show/258427</div><div class="src-m">شبابيك · 2025</div></div></div><div class="src"><div class="src-n">[5]</div><div class="src-b"><div class="src-t">الدبلومة الأمريكية ومعادلتها بالثانوية المصرية العامة</div><div class="src-u">https://taqdeem-edu.com/american-diploma-admission-in-egyptian/</div><div class="src-m">منصة تقديم · 2024</div></div></div><div class="src"><div class="src-n">[6]</div><div class="src-b"><div class="src-t">Secondary School Certificates Requirements</div><div class="src-u">https://www.aucegypt.edu/admissions/undergraduate-requirements/secondary-school-certificates</div><div class="src-m">The American University in Cairo (AUC) · 2025</div></div></div><div class="src"><div class="src-n">[7]</div><div class="src-b"><div class="src-t">American Diploma in Egypt (guide) — EST/SAT</div><div class="src-u">https://sat-act-est.com/american-diploma-in-egypt-guide/</div><div class="src-m">sat-act-est.com · 2022</div></div></div><div class="src"><div class="src-n">[8]</div><div class="src-b"><div class="src-t">الدبلومة الأمريكية في مصر: دليل شامل + متطلبات القبول</div><div class="src-u">https://thetestadvantage.com/blog-details/84</div><div class="src-m">The Test Advantage · 2025</div></div></div><div class="src"><div class="src-n">[9]</div><div class="src-b"><div class="src-t">الاعتراف بمؤهلات التعليم العالي من خارج الدولة</div><div class="src-u">https://mohesr.gov.ae/ar/EServices/ServiceCard/pages/UniversiyCertificateEquilization.aspx</div><div class="src-m">وزارة التعليم العالي — الإمارات · 2025</div></div></div><div class="src"><div class="src-n">[10]</div><div class="src-b"><div class="src-t">قبول الطلبة والاعتراف بالمؤهلات</div><div class="src-u">https://u.ae/ar/information-and-services/education/higher-education/Student-admission-and-qualification-recognition</div><div class="src-m">المنصة الرسمية لحكومة الإمارات · 2025</div></div></div><div class="src"><div class="src-n">[11]</div><div class="src-b"><div class="src-t">دراسة الطب في ألمانيا بعد الدبلومة الأمريكية</div><div class="src-u">https://hadatha.net/الطب-في-ألمانيا-بعد-الدبلومة-الأمريكي/</div><div class="src-m">حداثة · 2024</div></div></div><div class="src"><div class="src-n">[12]</div><div class="src-b"><div class="src-t">مميزات وعيوب الدبلومة الأمريكية (تحديات Home Schooling)</div><div class="src-u">https://lifemagazine4u.blogspot.com/2022/12/blog-post_4.html</div><div class="src-m">Life Magazine · 2022</div></div></div><div class="src"><div class="src-n">[13]</div><div class="src-b"><div class="src-t">أنواع وأسعار كورسات الدبلومة الأمريكية (transcript يوتيوب)</div><div class="src-u">https://www.youtube.com/watch?v=3VTnTXzYPCs</div><div class="src-m">يوتيوب — د. أحمد حسن · 2024</div></div></div><div class="src"><div class="src-n">[14]</div><div class="src-b"><div class="src-t">هل فعلاً الدبلومة الأمريكية طلعت مقلب؟ (كل يوم)</div><div class="src-u">https://www.youtube.com/watch?v=3VTnTXzYPCs</div><div class="src-m">يوتيوب — تجربة طالب · 2024</div></div></div></section>
+  <div id="progress"></div><button id="themebtn" title="Theme">☀️ فاتح / 🌙 غامق</button><button id="totop" title="أعلى">↑</button><script>const p=document.getElementById("progress");const b=document.getElementById("totop");const tb=document.getElementById("themebtn");const root=document.documentElement;if(localStorage.getItem("rtheme")=="alt")root.setAttribute("data-theme","alt");tb.onclick=()=>{const on=root.getAttribute("data-theme")=="alt";if(on){root.removeAttribute("data-theme");localStorage.setItem("rtheme","base");}else{root.setAttribute("data-theme","alt");localStorage.setItem("rtheme","alt");}};addEventListener("scroll",()=>{const h=document.documentElement;const sc=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=sc+"%";b.style.display=h.scrollTop>400?"flex":"none";});b.onclick=()=>scrollTo({top:0,behavior:"smooth"});</script>
+</body></html>
